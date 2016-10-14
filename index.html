@@ -5,6 +5,53 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+	<header>
+		<h3>Score:</h3>
+		<span class="correct-num">0</span>
+		<span>Correct</span>
+		<span class="wrong-num">0</span>
+		<span>Wrong</span>
+	</header>
+
+	<section>
+		<h1>Cat Quiz</h1>
+		<button id="js-start-quiz">Click to start</button>
+	</section>
+
+	<section class="question">
+		<span class="question-num">Q1.</span>
+		<h2>What is the best cat?</h2>
+		<ul>
+			<li>
+				<input type="checkbox" name="" />
+				a. Cat in hat
+			</li>
+			<li>
+				<input type="checkbox" name="" />
+				b. House cat
+			</li>
+			<li>
+				<input type="checkbox" name="" />
+				c. Alley cat
+			</li>
+			<li>
+				<input type="checkbox" name="" />
+				d. All cats
+			</li>
+		</ul>
+		<div class="answer-section">
+			Correct: All cats are best.
+		</div>
+	</section>
+
+	<section class="results">
+		<h2>You finished the quiz!</h2>
+		<p>
+			<span class="correct-num">5</span>/5 Correct
+		</p>
+		<p>You love cats!</p>
+		<a href="#">Play again</a>
+	</section>
 
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="scripts.js"></script>
