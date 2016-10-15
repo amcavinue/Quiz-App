@@ -10,6 +10,10 @@ body {
 	line-height: 1.5em;
 }
 
+hr {
+	color: #222;
+}
+
 header {
 	background-color: rgba(255,255,255,0.9);
 	text-align: center;
@@ -61,25 +65,25 @@ h1 {
 }
 
 .intro button {
-  color: #ddd;
-  background: rgba(0,0,0,0);
-  border: solid 0.2em #ddd;
-  padding: 0.5em 2em;
-  cursor: pointer;
-  margin-top: 3.5em;
-  font-size: 1.125em;
+  	color: #ddd;
+  	background: rgba(0,0,0,0);
+  	border: solid 0.2em #ddd;
+  	padding: 0.5em 2em;
+  	cursor: pointer;
+  	margin-top: 3.5em;
+  	font-size: 1.125em;
 }
 
 .intro button:hover, 
 .intro button.hover {
-  border-color: #fff;
-  color: #fff;
+  	border-color: #fff;
+  	color: #fff;
 }
 
 .intro button:active,
 .intro button.active {
-  border-color: #ddd;
-  color: #ddd;
+  	border-color: #ddd;
+  	color: #ddd;
 }
 
 .question {
@@ -101,7 +105,7 @@ h1 {
 .question-num {
 	font-weight: 700;
 	font-size: 1.75em;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.75em;
     display: inline-block;
     text-align: center;
     width: 100%;
@@ -111,9 +115,6 @@ h2 {
 	font-weight: 300;
 	display: inline-block;
 	margin-bottom: 0.75em;
-}
-
-.question-content h2 {
 }
 
 .checkbox {
