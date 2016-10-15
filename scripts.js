@@ -47,7 +47,7 @@ $(function() {
 		},
 		{
 			question: "What are cat whiskers for?",
-			a: "They are a highly-sophisticated, multi-purpose, sensory organ.",
+			a: "They are highly-sophisticated, multi-purpose, sensory organs.",
 			b: "They help cats attract mates.",
 			c: "They are used solely for brushing up on human legs.",
 			d: "They are just fur that has grown too long.",
