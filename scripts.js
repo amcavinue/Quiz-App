@@ -6,7 +6,8 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
 		{
 			question: "2 What is the best cat?",
@@ -14,7 +15,8 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
 		{
 			question: "3 What is the best cat?",
@@ -22,7 +24,8 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
 		{
 			question: "4 What is the best cat?",
@@ -30,7 +33,8 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
 		{
 			question: "5 What is the best cat?",
@@ -38,7 +42,8 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
 		{
 			question: "6 What is the best cat?",
@@ -46,7 +51,8 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
 		{
 			question: "7 What is the best cat?",
@@ -54,9 +60,10 @@ $(function() {
 			b: "House cat",
 			c: "Alley cat",
 			d: "All cats",
-			correct: 'd'
+			correct: 'd',
+			description: "All cats are best."
 		},
-	],
+	]
 	state = {
 		questionNum: 0,
 		correct: 0,
@@ -81,15 +88,22 @@ function getQuestion(state, questions) {
 	$jsQuestions.append(renderQuestion(state, question));
 
 	$('.js-answers:eq(' + state.questionNum + ')').on('click', '.checkbox', function(e) {
+		var $this = $(this),
+			answerSection = $this.parents('.js-answers').siblings('.answer-section');
+
 		// Turn off the listener so each question is only answered once.
 		$('.js-answers').off('click');
 
-		$(this).addClass('checked');
+		$this.addClass('checked');
 
-		if ($(this).data('question') === answer) {
+		if ($this.data('question') === answer) {
 			state.correct++;
+			$(answerSection).addClass('correct');
+			$(answerSection).append('Correct: ' + question.description);
 		} else {
 			state.wrong++;
+			$(answerSection).addClass('wrong');
+			$(answerSection).append('Wrong: ' + question.description);
 		}
 
 		updateScore(state);
@@ -99,7 +113,7 @@ function getQuestion(state, questions) {
 		if (state.questionNum < 5) {
 			getQuestion(state, questions);
 		} else {
-			getResults(state);
+			getResults(state, questions);
 		}
 	});
 }
@@ -109,13 +123,12 @@ function updateScore(state) {
 	$('.js-wrong-num').text(state.wrong);
 }
 
-function getResults(state) {
+function getResults(state, questions) {
 	$('.js-content').append(renderResults(state));
-}
-
-
-function reset(state) {
-
+	$('.js-replay').click(function(e) {
+		e.preventDefault();
+		location.reload();
+	});
 }
 
 function closingStatement(state) {
@@ -138,19 +151,19 @@ function renderQuestion(state, qAndA) {
 				'<ul class="js-answers">' +
 					'<li>' +
 						'<span class="checkbox" data-question="a"></span>' +
-						'a.' + qAndA.a +
+						'a. ' + qAndA.a +
 					'</li>' +
 					'<li>' +
 						'<span class="checkbox" data-question="b"></span>' +
-						'b.' + qAndA.b +
+						'b. ' + qAndA.b +
 					'</li>' +
 					'<li>' +
 						'<span class="checkbox" data-question="c"></span>' +
-						'c.' + qAndA.c +
+						'c. ' + qAndA.c +
 					'</li>' +
 					'<li>' +
 						'<span class="checkbox" data-question="d"></span>' +
-						'd.' + qAndA.d +
+						'd. ' + qAndA.d +
 					'</li>' +
 				'</ul>' +
 				'<div class="answer-section">' +
@@ -167,6 +180,6 @@ function renderResults(state) {
 				'You Got <strong><span class="js-correct-num">' + state.correct + '</span>/5 Correct</strong>' +
 			'</p>' +
 			'<p class="closing-statement">' + closingStatement(state) + '</p>' +
-			'<a href="#" class="replay">PLAY AGAIN</a>' +
+			'<a href="#" class="replay js-replay">PLAY AGAIN</a>' +
 		'</section>';
 }
