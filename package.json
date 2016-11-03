@@ -1,0 +1,28 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "description": "A quiz app on cats, demonstrating HTML, CSS, and JavaScript skills.",
+  "main": "index.html",
+  "scripts": {
+    "mkdir": "mkdir build",
+    "clean": "rm -rf build",
+    "build": "npm run clean && npm run mkdir && npm run build:css && npm run copyfiles",
+    "watch": "npm run watch:html & npm run watch:css",
+    "build:css": "lessc --source-map css/globals.less build/main.css",
+    "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
+    "copyfiles": "cp index.html build/index.html && cp ohhai-sarah6-new.jpg build/ohhai-sarah6-new.jpg && cp scripts.js build/scripts.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amcavinue/Quiz-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amcavinue/Quiz-App/issues"
+  },
+  "homepage": "https://github.com/amcavinue/Quiz-App#readme",
+  "devDependencies": {
+    "less": "^2.7.1"
+  }
+}

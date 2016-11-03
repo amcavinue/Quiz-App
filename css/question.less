@@ -1,0 +1,49 @@
+.question {
+    padding: 2em 0;
+    background-color: white;
+
+    .question-content {
+        max-width: 350px;
+        margin: 0 auto;
+        text-align: left;
+
+        .question-num {
+            font-weight: 700;
+            font-size: 1.75em;
+            margin-bottom: 0.75em;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        h2 {
+            font-weight: 300;
+            display: inline-block;
+            margin-bottom: 0.75em;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-bottom: 0.75em;
+
+            .checkbox {
+                width: 1em;
+                height: 1em;
+                display: inline-block;
+                position: relative;
+                top: 0.25em;
+                border: 0.125em solid #777;
+                margin-right: 0.5em;
+                cursor: pointer;
+            }
+
+            .checked:before {
+                content: "\2713";
+                font-weight: 900;
+                position: relative;
+                bottom: 0.25em;
+                left: 0.1em;
+            }
+        }
+    }
+}
