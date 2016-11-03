@@ -6,9 +6,10 @@
   "scripts": {
     "mkdir": "mkdir build",
     "clean": "rm -rf build",
-    "build": "npm run clean && npm run mkdir && npm run build:css && npm run copyfiles",
+    "build": "npm run clean && npm run mkdir && npm run build:css && npm run build:css:minified && npm run copyfiles",
     "watch": "npm run watch:html & npm run watch:css",
     "build:css": "lessc --source-map css/globals.less build/main.css",
+    "build:css:minified": "lessc --clean-css --source-map css/globals.less build/main.min.css",
     "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
     "copyfiles": "cp index.html build/index.html && cp ohhai-sarah6-new.jpg build/ohhai-sarah6-new.jpg && cp scripts.js build/scripts.js"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/amcavinue/Quiz-App#readme",
   "devDependencies": {
-    "less": "^2.7.1"
+    "less": "^2.7.1",
+    "less-plugin-clean-css": "^1.5.1"
   }
 }
