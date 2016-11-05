@@ -2,16 +2,18 @@
   "name": "quiz-app",
   "version": "1.0.0",
   "description": "A quiz app on cats, demonstrating HTML, CSS, and JavaScript skills.",
-  "main": "index.html",
+  "main": "js/index.js",
   "scripts": {
     "mkdir": "mkdir build",
     "clean": "rm -rf build",
-    "build": "npm run clean && npm run mkdir && npm run build:css && npm run build:css:minified && npm run copyfiles",
-    "watch": "npm run watch:html & npm run watch:css",
+    "build": "npm run clean && npm run mkdir && npm run build:css && npm run build:css:minified && npm run copyfiles && npm run build:js",
+    "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
     "build:css": "lessc --source-map css/globals.less build/main.css",
     "build:css:minified": "lessc --clean-css --source-map css/globals.less build/main.min.css",
     "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
-    "copyfiles": "cp index.html build/index.html && cp ohhai-sarah6-new.jpg build/ohhai-sarah6-new.jpg && cp scripts.js build/scripts.js"
+    "copyfiles": "cp index.html build/index.html && cp ohhai-sarah6-new.jpg build/ohhai-sarah6-new.jpg",
+    "build:js": "webpack",
+    "watch:js": "npm run build:js && webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,10 @@
   "homepage": "https://github.com/amcavinue/Quiz-App#readme",
   "devDependencies": {
     "less": "^2.7.1",
-    "less-plugin-clean-css": "^1.5.1"
+    "less-plugin-clean-css": "^1.5.1",
+    "webpack": "^1.13.3"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1"
   }
 }
