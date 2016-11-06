@@ -6,6 +6,18 @@ var packageData = require('./package.json');
 
 var filename = [packageData.name, packageData.version, 'js'];
 
+var plugins = [];
+
+// If you use the --minify argument then
+// it adds a .min extension, and
+// adds it to the plugins array.
+var minify = process.argv.indexOf('--minify') != -1;
+
+if (minify) {
+    filename.splice(filename.length - 1, 0, 'min');
+    plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
 module.exports = {
     entry: path.resolve(__dirname, packageData.main),
     output: {
@@ -24,5 +36,6 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: plugins
 }
