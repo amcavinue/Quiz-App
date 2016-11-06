@@ -1,7 +1,10 @@
 var $ = require('jquery');
 
+/**
+* Functions used for outputting html info to the DOM.
+*/
 var domOutput = {
-    closingStatement: function(state) {
+    closingStatement(state) {
         if (state.correct === 5) {
             return 'You love cats!';
         } else if (state.correct === 4) {
@@ -12,7 +15,7 @@ var domOutput = {
             return 'You might be a dog person.';
         }
     },
-    renderQuestion: function(state, qAndA) {
+    renderQuestion(state, qAndA) {
         return '<section class="question">' +
         '<div class="question-content">' +
         '<span class="question-num">Q' + (state.questionNum + 1) + '.</span>' +
@@ -41,7 +44,7 @@ var domOutput = {
         '</section>' +
         '<hr />';
     },
-    renderResults: function(state) {
+    renderResults(state) {
         return '<section class="results">' +
             '<h2>You finished the quiz!</h2>' +
             '<p class="result-stats">' +

@@ -2,7 +2,13 @@ var $ = require('jquery');
 var domOutput = require('./dom-output');
 
 var questionProcessing = {
-    getQuestion: function(state, questions) {
+    /**
+     * Gets a new, random question from the input, and
+     * sets required listeners for it.
+     * @param {object} state
+     * @param {Array}  questions
+     */
+    getQuestion(state, questions) {
         var randIndex = Math.floor(Math.random() * (questions.length)),
             question = questions[randIndex],
             $jsQuestions = $('#js-questions'),
@@ -42,11 +48,23 @@ var questionProcessing = {
             }
         });
     },
-    updateScore: function(state) {
+
+    /**
+     * Updates the score in the DOM with the number right and wrong.
+     * @param {object} state [[Description]]
+     */
+    updateScore(state) {
         $('.js-correct-num').text(state.correct);
         $('.js-wrong-num').text(state.wrong);
     },
-    getResults: function(state, questions) {
+
+    /**
+     * Sets listeners to render the results of the quiz and
+     * reload page if the user clicks that.
+     * @param {object} state
+     * @param {array} questions
+     */
+    getResults(state, questions) {
         $('.js-content').append(domOutput.renderResults(state));
         $('.js-replay').click(function(e) {
             e.preventDefault();
